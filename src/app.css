@@ -1,0 +1,372 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  overflow: scroll;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.app {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  width: 100vw;
+  min-height: 100vh;
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 25%;
+  z-index: 1;
+}
+
+.side-menu svg {
+  z-index: 2;
+  color: var(--accent);
+  transition: color 250ms ease-in-out;
+  cursor: pointer;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  height: 3em;
+  width: 3em;
+  transition: top 250ms ease-in-out, left 250ms ease-in-out,
+    height 250ms ease-in-out, width 250ms ease-in-out, color 250ms ease-in-out;
+}
+
+.side-menu svg:hover {
+  height: 3.2em;
+  width: 3.2em;
+  top: 0.9em;
+  left: 0.9em;
+}
+
+.side-menu-content {
+  border-right: 0.125em solid var(--accent);
+  height: 100vh;
+  width: 100%;
+  background-color: var(--text-color-transparent);
+  backdrop-filter: blur(0.8em);
+  transition: background-color 250ms ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+}
+
+.side-menu-button {
+  border: none;
+  border-radius: 0.3em;
+  background-color: var(--button-color);
+  color: var(--text-color);
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+  padding: 1.5em;
+  width: 50%;
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 0.125em;
+  cursor: pointer;
+}
+
+.side-menu-button:hover {
+  background-color: var(--accent);
+}
+
+.side-menu-content .toggleContainer {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+[data-theme="dark"] {
+  --background-color: #1f4529;
+  --text-color: #47663b;
+  --text-color-transparent: rgba(71, 102, 59, 0.5);
+  --button-color: #eed3b1;
+  --accent: #e8ecd7;
+}
+
+[data-theme="light"] {
+  --accent: #1f4529;
+  --button-color: #47663b;
+  --text-color-transparent: rgba(238, 211, 177, 0.5);
+  --text-color: #eed3b1;
+  --background-color: #e8ecd7;
+}
+
+.toggleContainer {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+.toggle {
+  display: none;
+}
+
+.toggle + label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.toggle + label::before {
+  content: "";
+  height: 1.2em;
+  width: 2.5em;
+  border-radius: 1em;
+  background-color: var(--button-color);
+  transition: background-color 250ms ease-in-out;
+}
+
+.toggle + label::after {
+  content: "";
+  height: 0.8em;
+  width: 0.8em;
+  border-radius: 1em;
+  background-color: var(--text-color);
+  position: absolute;
+  transform: translateX(0.2em);
+  transition: transform 250ms ease-in-out, background-color 250ms ease-in-out;
+}
+
+.toggle:checked + label::after {
+  transform: translateX(calc(2.5em - 0.8em - 0.2em));
+}
+
+.mainMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8em;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  margin: auto;
+  padding: 20px;
+  background-color: var(--text-color-transparent);
+  backdrop-filter: blur(0.25em);
+  border-radius: 0.25em;
+}
+
+.mainMenu .title,
+.contact .title {
+  background-color: transparent;
+  border-radius: 0;
+  backdrop-filter: none;
+}
+
+.title {
+  text-align: center;
+  color: var(--button-color);
+  letter-spacing: 0.125em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6px;
+  transition: color 250ms ease-in-out;
+  background-color: var(--text-color-transparent);
+  border-radius: 0.25em;
+  backdrop-filter: blur(0.3em);
+}
+
+.title p {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 3em;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.mainMenu .side-menu-button {
+  width: 80%;
+}
+
+.contact {
+  padding: 20px;
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  background-color: var(--text-color-transparent);
+  backdrop-filter: blur(0.2em);
+  border-radius: 0.3em;
+}
+
+.contactButtons {
+  display: flex;
+  gap: 1.25em;
+  justify-content: space-between;
+}
+
+.contactButtons button {
+  width: 10em;
+}
+
+.select-menu {
+  margin: 0 auto;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  padding: 60px 0;
+}
+
+.select-menu .title {
+  margin: auto;
+  padding: 10px 0;
+  width: 50%;
+}
+
+.select-grid {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25em;
+}
+
+.select-sudokuGrid {
+  cursor: pointer;
+  height: 12.5em;
+  width: 12.5em;
+  border-collapse: collapse;
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out,
+    border 250ms ease-in-out;
+}
+
+.select-grid table {
+  border: 0.3em solid var(--button-color);
+  position: relative;
+  transition: border 250ms ease-in-out;
+}
+
+.sudokuNumber {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 4em;
+  color: var(--accent);
+  background-color: var(--text-color-transparent);
+  backdrop-filter: blur(0.05em);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  transition: color 250ms ease-in-out, background-color 250ms ease-in-out,
+    font-size 250ms ease-in-out, backdrop-filter 250ms ease-in-out;
+}
+
+.sudokuNumber:hover {
+  font-size: 6em;
+  backdrop-filter: blur(0.07em);
+}
+
+.select-cellInput {
+  width: 1.8em;
+  height: 1.8em;
+  text-align: center;
+  pointer-events: none;
+  border: 0.1em solid var(--accent);
+  color: var(--background-color);
+  font-weight: bold;
+  font-size: 0.8em;
+  background-color: var(--text-color);
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out,
+    border 250ms ease-in-out;
+}
+
+.cBorder {
+  border-left: 0.2em solid var(--accent);
+  transition: border 250ms ease-in-out;
+}
+
+.rBorder {
+  border-top: 0.2em solid var(--accent);
+  transition: border 250ms ease-in-out;
+}
+
+.select-cellInput:disabled {
+  background-color: var(--button-color);
+}
+
+.sudoku {
+  max-width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.sudokuGrid {
+  border-collapse: collapse;
+  border: 5px solid var(--accent);
+  transition: border 250ms ease-in-out;
+}
+
+.sudokuGrid td {
+  padding: 0;
+  height: 3em;
+  width: 3em;
+}
+
+.cellInput {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  background-color: var(--text-color);
+  color: var(--button-color);
+  font-weight: bold;
+  font-size: 1.8em;
+  font-weight: 400;
+  border: 0.05em solid var(--accent);
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out,
+    border 250ms ease-in-out;
+}
+
+.cellInput:disabled {
+  background-color: var(--button-color);
+  color: var(--background-color);
+  pointer-events: none;
+}
+
+.sudoku-buttons {
+  display: flex;
+  justify-content: space-between;
+  height: 3em;
+  align-items: center;
+}
+
+.sudoku-buttons .side-menu-button {
+  padding: 0;
+  height: 100%;
+  width: 23%;
+  letter-spacing: 0;
+}
