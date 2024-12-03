@@ -7,6 +7,7 @@ export default function ThemeToggle({ handleChange, isDark }) {
         className="toggle"
         id="check"
         type="checkbox"
+        aria-label="Agree to terms and conditions"
         onChange={handleChange}
         checked={isDark}
       />
