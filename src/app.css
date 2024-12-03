@@ -5,6 +5,18 @@
   user-select: none;
 }
 
+.sr-only {
+  position: absolute; /* Scoate textul din fluxul normal al documentului */
+  width: 1px; /* Reduce dimensiunile */
+  height: 1px; /* La fel */
+  margin: -1px; /* Îl scoate în afara vizibilului */
+  padding: 0; /* Elimină padding-ul */
+  border: 0; /* Fără borduri */
+  clip: rect(0, 0, 0, 0); /* Ascunde vizual */
+  overflow: hidden; /* Elimină eventualele artefacte */
+  white-space: nowrap; /* Previne textul de la a ocupa mai multe linii */
+}
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;

@@ -11,7 +11,9 @@ export default function ThemeToggle({ handleChange, isDark }) {
         checked={isDark}
         aria-label="Toggle theme"
       />
-      <label htmlFor="check" title="Toggle theme"></label>
+      <label htmlFor="check" title="Toggle theme">
+        <span className="sr-only">Toggle theme</span>
+      </label>
     </div>
   );
 }
